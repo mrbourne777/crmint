@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TimezoneService } from '../shared/timezone.service';
 import { Job } from 'app/models/job';
 import { Pipeline } from 'app/models/pipeline';
 
@@ -27,7 +28,15 @@ export class PipelineJobsComponent implements OnInit {
   @Output() jobStartClicked: EventEmitter<string> = new EventEmitter();
   @Output() deleteClicked: EventEmitter<string> = new EventEmitter();
 
-  constructor() { }
+  timeZone: string;
 
-  ngOnInit() {}
+  constructor(private timezoneService: TimezoneService) { }
+
+  ngOnInit() {
+    this.timeZone = this.timezoneService.getShortTimeZone();
+  }
+
+  formatToLocalTimezone(utcTime: string | null): string {
+    return this.timezoneService.formatToLocalTimezone(utcTime);
+  }
 }
