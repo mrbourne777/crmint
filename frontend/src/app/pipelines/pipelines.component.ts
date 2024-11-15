@@ -140,10 +140,8 @@ export class PipelinesComponent implements OnInit {
         this.totalPipelines++;
         this.updateDisplayedPipelines();
         this.totalPages = Math.ceil(this.totalPipelines / this.itemsPerPage);
-        if (this.pipelines.length > this.itemsPerPage) {
-          this.currentPage = this.totalPages;
-          this.loadPipelines(this.currentPage, this.itemsPerPage);
-        }
+        this.currentPage = 1;
+        this.loadPipelines(this.currentPage, this.itemsPerPage);
       },
       (error) => {
         console.error('Error importing pipeline:', error);
