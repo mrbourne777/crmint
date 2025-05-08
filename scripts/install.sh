@@ -140,6 +140,9 @@ function install_command_line() {
   echo "Activating virtual environment..."
   . .venv/bin/activate
 
+  # Fix packaging version to prevent Cloud Build conflict
+  pip install --upgrade packaging
+
   # Upgrade pip, setuptools, and wheel
   echo "Upgrading pip, setuptools, and wheel..."
   pip install --upgrade pip setuptools wheel &> /dev/null
