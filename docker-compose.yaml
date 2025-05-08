@@ -109,7 +109,7 @@ services:
                [ ! -d '.venv_controller' ] &&
                    python3 -m venv .venv_controller &&
                    . .venv_controller/bin/activate &&
-                   pip install --upgrade pip wheel setuptools pip-tools \\
+                   pip install --upgrade pip wheel setuptools pip-tools packaging \\
                        --no-cache &&
                    deactivate;
                . .venv_controller/bin/activate;
