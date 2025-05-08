@@ -139,13 +139,10 @@ function install_command_line() {
   # Activate the virtual environment
   echo "Activating virtual environment..."
   . .venv/bin/activate
-
-  # Fix packaging version to prevent Cloud Build conflict
-  pip install --upgrade packaging
-
-  # Upgrade pip, setuptools, and wheel
-  echo "Upgrading pip, setuptools, and wheel..."
-  pip install --upgrade pip setuptools wheel &> /dev/null
+  
+  # Upgrade pip, setuptools, wheel, and packaging in a single command to avoid conflicts
+  echo "Upgrading pip, setuptools, wheel, and packaging..."
+  pip install --upgrade pip setuptools wheel packaging &> /dev/null
 
   # Proceed to install the cli package
   echo "Installing CRMint CLI package..."
